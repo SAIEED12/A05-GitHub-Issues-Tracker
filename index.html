@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Issues Tracker</title>
+    <!-- Tailwind + DaisyUI + Fonts -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#F8FAFC] pt-[20px] min-h-screen flex items-center">
+    <div class="w-full max-w-[520px] bg-white shadow-lg mt-[60px] mx-auto text-center">
+      <img src="./assets/github-logo.png" alt="" class="mx-auto mt-8"/>
+      <h2 class="text-[#1F2937] font-semibold text-[24px] mt-6">GitHub Issues Tracker</h2>
+      <p class="text-[#64748B]">Sign in to manage your issues</p>
+
+      <!-- Sign In Form -->
+      <div class="form">
+        <div class="card w-full shrink-0 mx-auto rounded-2xl">
+          <div class="card-body">
+            <fieldset class="fieldset">
+              <label class="label text-neutral font-bold">Username</label>
+              <input id="input-mobile" type="text" class="input rounded-sm w-full" placeholder="Enter Username"/>
+              <p class="text-left text-[#4A00FF]">Default: admin</p>
+
+              <br/>
+
+              <label class="label text-neutral font-bold">Password</label>
+              <input id="input-pin" type="password" class="input rounded-sm w-full" placeholder="Enter Password"/>
+              <p class="text-left text-[#4A00FF]">Default: admin123</p>
+
+              <button id="login-btn" class="btn btn-primary mt-4 rounded-sm">Sign In</button>
+
+                <!-- Divider -->
+              <div class="flex w-full flex-col">
+                <div class="divider my-6">OR</div>
+              </div>
+
+              <!-- Demo Credentials -->
+              <p>Demo Credentials:</p>
+              <div class="bg-[#F8FAFC] p-5">
+                <p><span class="font-bold">Username:</span> admin</p>
+                <p><span class="font-bold">Password:</span> admin123</p>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="./script/script.js"></script>
+  </body>
+</html>
