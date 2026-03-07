@@ -78,7 +78,7 @@ async function loadIssues(){
 function displayIssues(issues){
     issues.forEach((issue)=>{
         const allCard = document.createElement("div");
-        allCard.className = "card bg-white shadow-lg rounded-lg cursor-pointer";
+        allCard.className = `card bg-white shadow-lg rounded-lg cursor-pointer ${issue.status === "open" ? "border-t-3 border-green-500" : "border-t-3 border-purple-500"}`;
         allCard.innerHTML = `
         <div class="card-body">
               <div class="flex justify-between items-center mb-4 ">
