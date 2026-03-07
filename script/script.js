@@ -5,7 +5,11 @@ const signInBtn = document.getElementById("sign-in-btn");
 const tabSection = document.getElementById("tab-section");
 
 const issueContainer = document.getElementById("issues-container");
+const issueText = document.getElementById("issue-text");
 
+const loadingSpinner = document.getElementById("loadingSpinner");
+
+let allIssues = [];
 
 // Go to Main Page
 if (signInBtn) {
@@ -18,35 +22,66 @@ if (signInBtn) {
     });
 }
 
+// Loading Category Wise Button
+
+
 // Select Tab 
 async function selectTab(btn) {
-    const buttons = document.querySelectorAll(
-      "#tab-section button"
-    );
+    const buttons = document.querySelectorAll("#tab-section button");
     buttons.forEach((btn) => {
       btn.classList.remove("btn-primary");
       btn.classList.add("btn-outline");
     });
+
     const selectedBtn = document.getElementById(btn);
     selectedBtn.classList.add("btn-primary");
     selectedBtn.classList.remove("btn-outline");
+
+    issueContainer.innerHTML = "";
+
+    let selectedIssues;
+
+    if(btn === "open"){
+        selectedIssues = allIssues.filter(issue => issue.status === "open");
+    }
+    else if(btn === "closed"){
+        selectedIssues = allIssues.filter(issue => issue.status === "closed");
+    }
+    else{
+        selectedIssues = allIssues;
+    }
+
+    displayIssues(selectedIssues);
+
+}
+
+function showLoading() {
+    loadingSpinner.classList.remove("hidden");
+    issueContainer.innerHTML = "";
+}
+
+function hideLoading() {
+    loadingSpinner.classList.add("hidden");
 }
 
 async function loadIssues(){
+
+    showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     const data = await res.json();
-    console.log(data);
+    hideLoading();
+    allIssues = data.data;
     displayIssues(data.data);
 }
 
+
 function displayIssues(issues){
     issues.forEach((issue)=>{
-        console.log(issue);
         const allCard = document.createElement("div");
-        allCard.className = "card bg-white shadow-lg"
+        allCard.className = "card bg-white shadow-lg rounded-lg cursor-pointer";
         allCard.innerHTML = `
         <div class="card-body">
-              <div class="flex justify-between items-center">
+              <div class="flex justify-between items-center mb-4 ">
                 <img src="./assets/Open-Status.png" alt="">
                 <span class="badge border-red-300 badge-soft font-bold bg-red-100 px-8 text-[#EF4444] rounded-full">${issue.priority}</span>
               </div>
@@ -72,6 +107,7 @@ function displayIssues(issues){
           </div>
         `;
         issueContainer.appendChild(allCard)
+        issueText.innerText = `${issues.length} Issues`
     })
 }
 loadIssues();

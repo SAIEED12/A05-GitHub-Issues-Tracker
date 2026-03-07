@@ -71,11 +71,31 @@
     <main class="w-9/12 mx-auto rounded-lg">
 
       <!-- Tab Section -->
-      <div id="tab-section" class="flex gap-2 p-6 mt-10 bg-white rounded-lg shadow-lg">
+      <div id="tab-section" class="flex gap-2 p-6 mt-10 bg-white rounded-lg shadow-sm">
         <button onclick="selectTab('all')" id="all" class="btn btn btn-primary px-12">All</button>
         <button onclick="selectTab('open')" id="open" class="btn btn btn-outline px-12">Open</button>
         <button onclick="selectTab('closed')" id="closed" class="btn btn btn-outline px-12">Closed</button>
       </div>
+
+      <!-- Issue Count -->
+       <div class="mt-6 flex items-center gap-4 bg-white rounded-lg shadow-sm p-6">
+          <img src="./assets/Aperture.png" alt="issue-logo" class="bg-purple-100 rounded-full p-2"/>
+         <div>
+           <h2 id="issue-text" class="text-xl font-bold"></h2>
+           <p class="text-gray-600">Track and manage your project issues</p>
+         </div>
+          <div class="ml-auto flex gap-6 font-semibold items-center">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 bg-[#00AA6C] rounded-full"></span>
+              <p>Open</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 bg-[#9333EA] rounded-full"></span>
+              <p>Closed</p>
+            </div>
+          </div>
+       </div>
 
       <!-- Issues Container -->
       <div class="bg-white card card-body shadow-lg col-span-6 mt-6">
@@ -84,6 +104,10 @@
 
           <!-- Dynamically all cards will be added here through API -->
 
+        </div>
+
+        <div id="loadingSpinner" class=" justify-center items-center hidden">
+          <span class="loading loading-infinity loading-xl"></span>
         </div>
 
       </div>
