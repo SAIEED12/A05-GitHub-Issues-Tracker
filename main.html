@@ -30,12 +30,10 @@
       * {
         font-family: "Geist", sans-serif;
       }
-      body {
-        background-color: #f8fafc;
-      }
+
     </style>
   </head>
-  <body>
+  <body class="min-h-screen ">
 
     <!-- Navbar -->
     <nav>
@@ -69,5 +67,29 @@
         </div>
       </div>
     </nav>
+
+    <main class="w-9/12 mx-auto rounded-lg">
+
+      <!-- Tab Section -->
+      <div id="tab-section" class="flex gap-2 p-6 mt-10 bg-white rounded-lg shadow-lg">
+        <button onclick="selectTab('all')" id="all" class="btn btn btn-primary px-12">All</button>
+        <button onclick="selectTab('open')" id="open" class="btn btn btn-outline px-12">Open</button>
+        <button onclick="selectTab('closed')" id="closed" class="btn btn btn-outline px-12">Closed</button>
+      </div>
+
+      <!-- Issues Container -->
+      <div class="bg-white card card-body shadow-lg col-span-6 mt-6">
+
+        <div id="issues-container" class="grid grid-cols-1 sm:grid-cols-4 gap-6">
+
+          <!-- Dynamically all cards will be added here through API -->
+
+        </div>
+
+      </div>
+    </main>
+
+
+    <script src="./script/script.js"></script>
   </body>
 </html>
