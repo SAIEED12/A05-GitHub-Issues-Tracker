@@ -76,14 +76,19 @@ async function loadIssues(){
 
 
 function displayIssues(issues){
+     issueContainer.innerHTML = "";
     issues.forEach((issue)=>{
         const allCard = document.createElement("div");
         allCard.className = `card bg-white shadow-lg rounded-lg cursor-pointer ${issue.status === "open" ? "border-t-3 border-green-500" : "border-t-3 border-purple-500"}`;
+        
+        // const img = document.createElement("img");
+        // img.src = issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png";
+        
         allCard.innerHTML = `
         <div class="card-body">
               <div class="flex justify-between items-center mb-4 ">
-                <img src="./assets/Open-Status.png" alt="">
-                <span class="badge border-red-300 badge-soft font-bold bg-red-100 px-8 text-[#EF4444] rounded-full">${issue.priority}</span>
+                <img src="${issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}" alt="">
+                <span class="badge font-bold px-8 rounded-full ${issue.priority === "high" ? "border border-red-300 bg-red-100 text-red-500" : issue.priority === "medium" ? "border border-yellow-300 bg-yellow-100 text-yellow-600" : "border border-gray-300 bg-gray-100 text-gray-500"}">${issue.priority}</span>
               </div>
               <h2 class="card-title">${issue.title}</h2>
               <p class="line-clamp-2 text-[#64748B]">${issue.description}</p>
@@ -105,8 +110,8 @@ function displayIssues(issues){
               <p>${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
             </div>
           </div>
-        `;
-        issueContainer.appendChild(allCard)
+            `;
+            issueContainer.appendChild(allCard)
         issueText.innerText = `${issues.length} Issues`
     })
 }
