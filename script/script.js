@@ -87,7 +87,7 @@ function displayIssues(issues){
         allCard.innerHTML = `
         <div class="card-body">
               <div class="flex justify-between items-center mb-4 ">
-                <img src="${issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}" alt="">
+                <img src='${issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}' alt="">
                 <span class="badge font-bold px-8 rounded-full ${issue.priority === "high" ? "border border-red-300 bg-red-100 text-red-500" : issue.priority === "medium" ? "border border-yellow-300 bg-yellow-100 text-yellow-600" : "border border-gray-300 bg-gray-100 text-gray-500"}">${issue.priority}</span>
               </div>
               <h2 class="card-title">${issue.title}</h2>
