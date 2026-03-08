@@ -37,14 +37,14 @@
 
     <!-- Navbar -->
     <nav>
-      <div class="navbar bg-base-100 shadow-sm flex justify-between sm:px-12">
+      <div class="navbar bg-base-100 shadow-sm flex flex-wrap justify-between gap-2 px-4 sm:px-12">
         <div class="flex justify-between">
           <img src="./assets/github-logo.png" alt="logo" class="w-9" />
           <a class="btn btn-ghost text-xl hidden sm:flex">GitHub Issues Tracker</a>
         </div>
 
         <div class="flex gap-4">
-          <label class="input">
+          <label class="input ">
             <svg
               class="h-[1em] opacity-50"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,17 +61,17 @@
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" required placeholder="Search issues..." />
+            <input id="input-search" type="search" required placeholder="Search issues..." />
           </label>
-          <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+          <button id="btn-search" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
         </div>
       </div>
     </nav>
 
-    <main class="w-9/12 mx-auto rounded-lg">
+    <main class="w-full sm:w-11/12 lg:w-9/12 mx-auto rounded-lg">
 
       <!-- Tab Section -->
-      <div id="tab-section" class="flex gap-2 p-6 mt-10 bg-white rounded-lg shadow-sm">
+      <div id="tab-section" class="flex gap-2 p-2 lg:p-6 mt-8 bg-white rounded-lg shadow-sm overflow-hidden">
         <button onclick="selectTab('all')" id="all" class="btn btn btn-primary px-12">All</button>
         <button onclick="selectTab('open')" id="open" class="btn btn btn-outline px-12">Open</button>
         <button onclick="selectTab('closed')" id="closed" class="btn btn btn-outline px-12">Closed</button>
@@ -114,7 +114,7 @@
 
       <!-- Modal -->
        <!-- Open the modal using ID.showModal() method -->
-<button class="btn" onclick="issueModal.showModal()">open modal</button>
+<button  onclick="issueModal.showModal()"></button>
 
 <dialog id="issueModal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box max-w-[700px] h-[415px]">
@@ -163,7 +163,7 @@
     <!-- Close button -->
     <div class="modal-action mt-0">
       <form method="dialog">
-        <button class="btn bg-[#4F46E5] hover:bg-[#4338CA] text-white border-none px-8 rounded-xl">Close</button>
+        <button class="btn btn-primary bg-[#4F46E5] hover:bg-[#4338CA] text-white border-none px-8 rounded-sm">Close</button>
       </form>
     </div>
 
@@ -173,7 +173,6 @@
 </dialog>
 
     </main>
-
 
     <script src="./script/script.js"></script>
   </body>

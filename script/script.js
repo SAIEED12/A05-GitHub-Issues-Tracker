@@ -91,10 +91,7 @@ function displayIssues(issues){
         const allCard = document.createElement("div");
         allCard.className = `card bg-white shadow-lg rounded-lg cursor-pointer ${issue.status === "open" ? "border-t-3 border-green-500" : "border-t-3 border-purple-500"}`;
         
-        // const img = document.createElement("img");
-        // img.src = issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png";
-
-             // Create label badges
+             //label badges
         const labelBadges = issue.labels.map(label => {
             if(label === "bug") {
                 return `<span class="badge border border-red-300 bg-red-100 rounded-2xl font-bold px-2 text-red-500 text-[12px]"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,3 +151,16 @@ async function openModal(issueId){
 }
 
 loadIssues();
+
+document.getElementById("btn-search").addEventListener("click", ()=>{
+    const searchValue = document.getElementById("input-search").value.trim().toLowerCase();
+
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then(res => res.json())
+    .then(data => {
+        const searchResults = data.data;
+        const filteredIssues = searchResults.filter(issue => issue.title.toLowerCase().includes(searchValue));
+        displayIssues(filteredIssues);
+    });
+
+});
