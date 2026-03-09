@@ -90,6 +90,7 @@ function displayIssues(issues){
     issues.forEach((issue)=>{
         const allCard = document.createElement("div");
         allCard.className = `card bg-white shadow-lg rounded-lg cursor-pointer ${issue.status === "open" ? "border-t-3 border-green-500" : "border-t-3 border-purple-500"}`;
+        allCard.onclick = () => openModal(issue.id);
         
              //label badges
         const labelBadges = issue.labels.map(label => {
@@ -109,10 +110,9 @@ function displayIssues(issues){
                 return `<span class="badge border border-gray-300 bg-gray-100 rounded-2xl font-bold px-2 text-[12px] text-gray-700 ">${label.toUpperCase()}</span>`;
             }
         }).join(" ");
-        
         allCard.innerHTML = `
-        <div class="card-body ">
-              <div class="flex justify-between items-center mb-4">
+        <div class="card-body">
+              <div class="flex justify-between items-center mb-4 ">
                 <img src='${issue.status === "open" ? "./assets/Open-Status.png" : "./assets/Closed-Status.png"}' alt="">
                 <span class="badge font-bold px-8 rounded-full ${issue.priority === "high" ? "border border-red-300 bg-red-100 text-red-500" : issue.priority === "medium" ? "border border-yellow-300 bg-yellow-100 text-yellow-600" : "border border-gray-300 bg-gray-100 text-gray-500"}">${issue.priority.toUpperCase()}</span>
               </div>
